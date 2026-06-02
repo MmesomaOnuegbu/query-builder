@@ -59,8 +59,8 @@ function RuleNode({ rule, schema, errors, onUpdate, onRemove }: Props) {
       ref={setNodeRef}
       style={style}
       className={`
-        flex flex-wrap items-center gap-3 p-3 rounded-lg border bg-card
-        group transition-all shadow-sm hover:shadow-md
+        flex flex-wrap items-center gap-3 p-4 rounded-[1.5rem] border bg-white/80 dark:bg-black/50
+        shadow-sm transition-all duration-200
         ${rule.negated ? 'border-red-300 bg-red-50 dark:bg-red-950/20' : 'border-emerald-200 dark:border-emerald-900/30'}
         ${isDragging ? 'shadow-lg z-50 ring-2 ring-emerald-400' : ''}
       `}
@@ -82,7 +82,7 @@ function RuleNode({ rule, schema, errors, onUpdate, onRemove }: Props) {
       )}
 
       {/* field */}
-      <div className="flex items-start gap-1">
+      <div className="flex-1 min-w-[150px]">
         <FieldSelector
           value={rule.field}
           schema={schema}
@@ -92,7 +92,7 @@ function RuleNode({ rule, schema, errors, onUpdate, onRemove }: Props) {
       </div>
 
       {/* operator */}
-      <div className="flex items-start gap-1">
+      <div className="flex-1 min-w-[140px]">
         <OperatorSelector
           field={rule.field}
           value={rule.operator}
@@ -103,7 +103,7 @@ function RuleNode({ rule, schema, errors, onUpdate, onRemove }: Props) {
       </div>
 
       {/* value */}
-      <div className="flex items-start gap-1">
+      <div className="flex-1 min-w-[170px]">
         <ValueInput
           field={rule.field}
           operator={rule.operator}
@@ -115,7 +115,7 @@ function RuleNode({ rule, schema, errors, onUpdate, onRemove }: Props) {
       </div>
 
       {/* actions */}
-      <div className="flex items-center gap-2 ml-auto opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+      <div className="flex items-center gap-2 ml-auto shrink-0">
         {/* toggle NOT */}
         <button
           type="button"

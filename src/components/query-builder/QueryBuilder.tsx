@@ -66,17 +66,23 @@ export default function QueryBuilder() {
     <div className="flex flex-col gap-4 w-full max-w-5xl mx-auto p-2 md:p-4">
 
       {/* ── Toolbar ──────────────────────────────────────────── */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <h1 className="text-xl font-semibold">Query Builder</h1>
+      <div className="rounded-[1rem] border border-emerald-50 bg-emerald-50/5 dark:border-none p-6 shadow-sm ring-1 ring-emerald-100 mb-4">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="max-w-2xl">
+            <h1 className="text-2xl font-semibold">Welcome</h1>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Build structured filters with nested groups, clear AND/OR logic, and visible condition controls.
+            </p>
+          </div>
 
-        <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap">
           {/* undo/redo */}
           <button
             type="button"
             onClick={undo}
             disabled={!canUndo}
             className="px-3 py-2 text-xs font-medium rounded-lg border-2 border-emerald-300 dark:border-emerald-700
-                       bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
+                       bg-emerald-50/10 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
                        disabled:opacity-40 disabled:cursor-not-allowed hover:bg-emerald-100 dark:hover:bg-emerald-900/30 
                        transition-all duration-200"
           >
@@ -87,7 +93,7 @@ export default function QueryBuilder() {
             onClick={redo}
             disabled={!canRedo}
             className="px-3 py-2 text-xs font-medium rounded-lg border-2 border-emerald-300 dark:border-emerald-700
-                       bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
+                       bg-emerald-50/10 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
                        disabled:opacity-40 disabled:cursor-not-allowed hover:bg-emerald-100 dark:hover:bg-emerald-900/30 
                        transition-all duration-200"
           >
@@ -99,7 +105,7 @@ export default function QueryBuilder() {
             type="button"
             onClick={handleSavePreset}
             className="px-3 py-2 text-xs font-medium rounded-lg border-2 border-emerald-300 dark:border-emerald-700
-                       bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
+                       bg-emerald-50/10 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
                        hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all duration-200"
           >
             Save Preset
@@ -110,7 +116,7 @@ export default function QueryBuilder() {
             type="button"
             onClick={handleExport}
             className="px-3 py-2 text-xs font-medium rounded-lg border-2 border-emerald-300 dark:border-emerald-700
-                       bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
+                       bg-emerald-50/10 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
                        hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all duration-200"
           >
             Export JSON
@@ -121,7 +127,7 @@ export default function QueryBuilder() {
             type="button"
             onClick={handleImport}
             className="px-3 py-2 text-xs font-medium rounded-lg border-2 border-emerald-300 dark:border-emerald-700
-                       bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
+                       bg-emerald-50/10 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
                        hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all duration-200"
           >
             Import JSON
@@ -139,6 +145,7 @@ export default function QueryBuilder() {
           </button>
         </div>
       </div>
+    </div>
 
       {/* ── Validation banner ────────────────────────────────── */}
       {!validation.valid && validation.errors.length > 0 && (
@@ -163,20 +170,22 @@ export default function QueryBuilder() {
       )}
 
       {/* ── Group tree ───────────────────────────────────────── */}
-      <GroupNode
-        group={root}
-        schema={schema}
-        errors={validation.errors}
-        depth={0}
-        isRoot={true}
-        onAddRule={addRule}
-        onAddGroup={addGroup}
-        onRemove={removeGroup}
-        onUpdateRule={updateRule}
-        onUpdateGroup={updateGroup}
-        onToggleCollapse={toggleCollapse}
-        onReorder={reorder}
-      />
+      <div className="rounded-[1rem]  dark:bg-black/50 shadow-sm overflow-hidden">
+        <GroupNode
+          group={root}
+          schema={schema}
+          errors={validation.errors}
+          depth={0}
+          isRoot={true}
+          onAddRule={addRule}
+          onAddGroup={addGroup}
+          onRemove={removeGroup}
+          onUpdateRule={updateRule}
+          onUpdateGroup={updateGroup}
+          onToggleCollapse={toggleCollapse}
+          onReorder={reorder}
+        />
+      </div>
 
       {/* ── Query preview ────────────────────────────────────── */}
       <QueryPreview

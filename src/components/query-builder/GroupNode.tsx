@@ -89,14 +89,14 @@ function GroupNode({
   return (
     <div
       className={`
-        rounded-lg border bg-card transition-all
-        ${!isRoot ? `border-l-2 ${depthColor}` : 'border-border'}
+        rounded-[1.5rem] border transition-all
+        ${!isRoot ? `border-l-2 ${depthColor}` : ''}
         ${group.negated ? 'border-red-300 bg-red-50 dark:bg-red-950/20' : 'border-emerald-200 dark:border-emerald-900/30'}
         ${depth > 0 ? 'ml-4' : ''}
       `}
     >
       {/* ── Group header ─────────────────────────────────────── */}
-      <div className="flex items-center gap-2 px-3 py-2 border-b border-border">
+      <div className="flex flex-wrap items-center gap-2 px-4 py-3 border-b border-border bg-emerald-50/40 dark:bg-emerald-950/20">
 
         {/* collapse toggle */}
         <button
@@ -105,8 +105,8 @@ function GroupNode({
           className="text-muted-foreground hover:text-foreground transition-colors"
         >
           {group.collapsed
-            ? <ChevronRight size={14} />
-            : <ChevronDown  size={14} />
+            ? <ChevronRight size={16} />
+            : <ChevronDown  size={16} />
           }
         </button>
 
@@ -128,7 +128,6 @@ function GroupNode({
           {group.children.length} condition{group.children.length !== 1 ? 's' : ''}
         </span>
 
-        {/* spacer */}
         <div className="flex-1" />
 
         {/* NOT toggle */}
@@ -166,7 +165,13 @@ function GroupNode({
 
       {/* ── Group body ───────────────────────────────────────── */}
       {!group.collapsed && (
-        <div className="p-3 flex flex-col gap-2">
+        <div className="p-4 flex flex-col gap-3">
+          <div className="rounded-2xl border border-emerald-200 bg-background px-3 py-2 text-xs text-muted-foreground">
+            {group.logic === 'AND'
+              ? 'All conditions in this group must match.'
+              : 'At least one condition in this group must match.'
+            }
+          </div>
 
           {/* empty state */}
           {group.children.length === 0 && (

@@ -25,10 +25,10 @@ export default function AppContent() {
 
   return (
     <div className="min-h-screen bg-background flex">
-      {/* Mobile overlay */}
+      {/* Overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-30 md:hidden"
+          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
@@ -36,9 +36,9 @@ export default function AppContent() {
       {/* Sidebar - Fixed */}
       <aside
         className={`
-          fixed left-0 top-0 h-screen w-64 bg-card border-r border-border 
+          fixed left-0 top-0 h-screen w-64 bg-card border-r border-border
           flex flex-col overflow-hidden z-40 transition-transform duration-300
-          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         `}
       >
         {/* Header with Logo and Dark Toggle */}
@@ -52,7 +52,7 @@ export default function AppContent() {
             <button
               type="button"
               onClick={() => setSidebarOpen(false)}
-              className="md:hidden p-2 rounded-md hover:bg-muted transition-colors"
+              className="lg:hidden p-2 rounded-md hover:bg-muted transition-colors"
             >
               <X size={16} />
             </button>
@@ -91,16 +91,30 @@ export default function AppContent() {
             })}
           </div>
         </nav>
+
+        <div className="border-t border-border p-4 bg-muted/50">
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">Recent history</p>
+          <div className="space-y-3">
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-3">
+              <p className="text-sm font-semibold text-foreground">Last saved query</p>
+              <p className="text-xs text-muted-foreground mt-1">Updated 5 minutes ago</p>
+            </div>
+            <div className="rounded-2xl border border-border bg-background p-3">
+              <p className="text-sm font-semibold text-foreground">Tips</p>
+              <p className="text-xs text-muted-foreground mt-1">Use nested groups to combine AND and OR filters clearly.</p>
+            </div>
+          </div>
+        </div>
       </aside>
 
-      {/* Main Content - Offset for fixed sidebar */}
-      <div className="flex-1 flex flex-col w-full md:ml-64">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col w-full">
         <header className="border-b border-border bg-card sticky top-0 z-10">
           <div className="px-4 md:px-6 py-3 flex items-center justify-between gap-4">
             <button
               type="button"
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="md:hidden p-2 rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+              className="lg:hidden p-2 rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
             >
               <Menu size={20} />
             </button>

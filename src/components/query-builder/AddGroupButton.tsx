@@ -12,10 +12,9 @@ function AddGroupButton({ onAdd }: Props) {
       type="button"
       onClick={onAdd}
       className="
-        flex items-center gap-2 px-3 py-2 text-sm font-medium
-        rounded-lg border-2 border-dashed border-orange-400 bg-orange-50 dark:bg-orange-950/20 text-orange-700 dark:text-orange-300
-        hover:bg-orange-100 dark:hover:bg-orange-900/30 hover:border-orange-500
-        transition-all duration-200
+        flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold
+        rounded-2xl border border-orange-300 bg-orange-50 text-orange-700
+        hover:bg-orange-100 hover:border-orange-400 transition-all duration-200
       "
     >
       <FolderPlus size={14} />

@@ -163,7 +163,7 @@ function ResultsTable({ data }: Props) {
                   className={`
                     px-2.5 py-1 text-xs rounded border transition-colors
                     ${page === pageNum
-                      ? 'bg-blue-500 text-white border-blue-500'
+                      ? 'bg-emerald-600 text-white border-emerald-600'
                       : 'border-border hover:bg-muted'
                     }
                   `}

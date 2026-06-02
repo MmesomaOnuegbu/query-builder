@@ -1,7 +1,7 @@
 // components/query-builder/RuleNode.tsx
 import { memo } from 'react'
-import { Rule } from '../types/query'
-import { Schema } from '../types/schema'
+import { Rule } from '@/types/query'
+import { Schema } from '@/types/schema'
 import { ValidationError } from '@/lib/query-validator'
 import { getDefaultOperator, getDefaultValue } from '@/lib/schema-utils'
 import { useSortable } from '@dnd-kit/sortable'
@@ -59,65 +59,71 @@ function RuleNode({ rule, schema, errors, onUpdate, onRemove }: Props) {
       ref={setNodeRef}
       style={style}
       className={`
-        flex items-center gap-2 p-2 rounded-lg border bg-card
-        group transition-colors
-        ${rule.negated ? 'border-red-300 bg-red-50 dark:bg-red-950/20' : 'border-border'}
-        ${isDragging ? 'shadow-lg z-50' : ''}
+        flex flex-wrap items-center gap-3 p-3 rounded-lg border bg-card
+        group transition-all shadow-sm hover:shadow-md
+        ${rule.negated ? 'border-red-300 bg-red-50 dark:bg-red-950/20' : 'border-emerald-200 dark:border-emerald-900/30'}
+        ${isDragging ? 'shadow-lg z-50 ring-2 ring-emerald-400' : ''}
       `}
     >
       {/* drag handle */}
       <button
         type="button"
         className="text-muted-foreground opacity-0 group-hover:opacity-100 
-                   cursor-grab active:cursor-grabbing transition-opacity"
+                   cursor-grab active:cursor-grabbing transition-opacity shrink-0"
         {...attributes}
         {...listeners}
       >
-        <GripVertical size={14} />
+        <GripVertical size={16} />
       </button>
 
       {/* NOT badge */}
       {rule.negated && (
-        <span className="text-xs font-bold text-red-500 shrink-0">NOT</span>
+        <span className="text-xs font-bold px-2 py-1 bg-red-200 dark:bg-red-900/40 text-red-700 dark:text-red-300 rounded shrink-0">NOT</span>
       )}
 
       {/* field */}
-      <FieldSelector
-        value={rule.field}
-        schema={schema}
-        onChange={handleFieldChange}
-        error={fieldError}
-      />
+      <div className="flex items-start gap-1">
+        <FieldSelector
+          value={rule.field}
+          schema={schema}
+          onChange={handleFieldChange}
+          error={fieldError}
+        />
+      </div>
 
       {/* operator */}
-      <OperatorSelector
-        field={rule.field}
-        value={rule.operator}
-        schema={schema}
-        onChange={handleOperatorChange}
-        error={operatorError}
-      />
+      <div className="flex items-start gap-1">
+        <OperatorSelector
+          field={rule.field}
+          value={rule.operator}
+          schema={schema}
+          onChange={handleOperatorChange}
+          error={operatorError}
+        />
+      </div>
 
       {/* value */}
-      <ValueInput
-        field={rule.field}
-        operator={rule.operator}
-        value={rule.value}
-        schema={schema}
-        onChange={value => onUpdate(rule.id, { value })}
-        error={valueError}
-      />
+      <div className="flex items-start gap-1">
+        <ValueInput
+          field={rule.field}
+          operator={rule.operator}
+          value={rule.value}
+          schema={schema}
+          onChange={value => onUpdate(rule.id, { value })}
+          error={valueError}
+        />
+      </div>
 
       {/* actions */}
-      <div className="flex items-center gap-1 ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="flex items-center gap-2 ml-auto opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
         {/* toggle NOT */}
         <button
           type="button"
           title="Toggle NOT"
           onClick={() => onUpdate(rule.id, { negated: !rule.negated })}
-          className="p-1 rounded hover:bg-muted text-muted-foreground hover:text-foreground"
+          className="p-1.5 rounded-md hover:bg-red-100 dark:hover:bg-red-900/30 text-muted-foreground hover:text-red-600 dark:hover:text-red-400 transition-colors"
         >
-          <Ban size={13} />
+          <Ban size={14} />
         </button>
 
         {/* remove */}
@@ -125,8 +131,7 @@ function RuleNode({ rule, schema, errors, onUpdate, onRemove }: Props) {
           type="button"
           title="Remove rule"
           onClick={() => onRemove(rule.id)}
-          className="p-1 rounded hover:bg-red-100 dark:hover:bg-red-900 
-                     text-muted-foreground hover:text-red-500"
+          className="p-1.5 rounded-md hover:bg-red-100 dark:hover:bg-red-900/30 text-muted-foreground hover:text-red-600 dark:hover:text-red-400 transition-colors"
         >
           <X size={13} />
         </button>

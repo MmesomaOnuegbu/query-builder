@@ -31,29 +31,31 @@ function ValueInput({ field, operator, value, schema, onChange, error }: Props) 
     const selected = Array.isArray(value) ? value as string[] : []
 
     return (
-      <div className="flex flex-wrap gap-1 min-w-[160px]">
-        {options.map(opt => (
-          <button
-            key={opt}
-            type="button"
-            onClick={() => {
-              const next = selected.includes(opt)
-                ? selected.filter(v => v !== opt)
-                : [...selected, opt]
-              onChange(next)
-            }}
-            className={`
-              px-2 py-0.5 rounded text-xs border transition-colors
-              ${selected.includes(opt)
-                ? 'bg-blue-500 text-white border-blue-500'
-                : 'bg-transparent border-border text-muted-foreground hover:border-blue-400'
-              }
-            `}
-          >
-            {opt}
-          </button>
-        ))}
-        {error && <p className="text-xs text-red-500 w-full mt-1">{error}</p>}
+      <div className="flex flex-col gap-1">
+        <div className="flex flex-wrap gap-2">
+          {options.map(opt => (
+            <button
+              key={opt}
+              type="button"
+              onClick={() => {
+                const next = selected.includes(opt)
+                  ? selected.filter(v => v !== opt)
+                  : [...selected, opt]
+                onChange(next)
+              }}
+              className={`
+                px-3 py-1.5 rounded-lg text-sm border-2 font-medium transition-all duration-200
+                ${selected.includes(opt)
+                  ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
+                  : 'bg-emerald-50 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-700 text-foreground hover:border-emerald-500'
+                }
+              `}
+            >
+              {opt}
+            </button>
+          ))}
+        </div>
+        {error && <p className="text-xs text-red-500 font-medium">{error}</p>}
       </div>
     )
   }
@@ -194,10 +196,11 @@ function ValueInput({ field, operator, value, schema, onChange, error }: Props) 
 // ── Base input styles ─────────────────────────────────────────────
 function baseInput(error?: string) {
   return `
-    h-8 px-2 text-sm rounded border bg-background text-foreground
-    focus:outline-none focus:ring-1 focus:ring-blue-500
-    min-w-[120px] max-w-[180px]
-    ${error ? 'border-red-500' : 'border-border'}
+    h-9 px-3 py-2 text-sm rounded-lg border-2 bg-emerald-50 dark:bg-emerald-950/20 text-foreground
+    focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent
+    transition-all duration-200
+    min-w-[80px] max-w-full font-medium
+    ${error ? 'border-red-500 bg-red-50 dark:bg-red-950/20' : 'border-emerald-300 dark:border-emerald-700'}
   `
 }
 

@@ -12,13 +12,13 @@ function AddRuleButton({ onAdd }: Props) {
       type="button"
       onClick={onAdd}
       className="
-        flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium
-        rounded-md border border-dashed border-blue-400 text-blue-500
-        hover:bg-blue-50 dark:hover:bg-blue-950/30
-        transition-colors
+        flex items-center gap-2 px-3 py-2 text-sm font-medium
+        rounded-lg border-2 border-dashed border-emerald-400 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
+        hover:bg-emerald-100 dark:hover:bg-emerald-900/30 hover:border-emerald-500
+        transition-all duration-200
       "
     >
-      <Plus size={13} />
+      <Plus size={14} />
       Add Rule
     </button>
   )

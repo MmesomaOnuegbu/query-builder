@@ -63,11 +63,11 @@ export default function QueryBuilder() {
   }
 
   return (
-    <div className="flex flex-col gap-4 w-full max-w-5xl mx-auto p-4">
+    <div className="flex flex-col gap-4 w-full max-w-5xl mx-auto p-2 md:p-4">
 
       {/* ── Toolbar ──────────────────────────────────────────── */}
-      <div className="flex items-center justify-between flex-wrap gap-2">
-        <h1 className="text-lg font-semibold">Query Builder</h1>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <h1 className="text-xl font-semibold">Welcome</h1>
 
         <div className="flex items-center gap-2 flex-wrap">
           {/* undo/redo */}
@@ -75,8 +75,10 @@ export default function QueryBuilder() {
             type="button"
             onClick={undo}
             disabled={!canUndo}
-            className="px-3 py-1.5 text-xs rounded border border-border
-                       disabled:opacity-40 hover:bg-muted transition-colors"
+            className="px-3 py-2 text-xs font-medium rounded-lg border-2 border-emerald-300 dark:border-emerald-700
+                       bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
+                       disabled:opacity-40 disabled:cursor-not-allowed hover:bg-emerald-100 dark:hover:bg-emerald-900/30 
+                       transition-all duration-200"
           >
             ↩ Undo
           </button>
@@ -84,8 +86,10 @@ export default function QueryBuilder() {
             type="button"
             onClick={redo}
             disabled={!canRedo}
-            className="px-3 py-1.5 text-xs rounded border border-border
-                       disabled:opacity-40 hover:bg-muted transition-colors"
+            className="px-3 py-2 text-xs font-medium rounded-lg border-2 border-emerald-300 dark:border-emerald-700
+                       bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
+                       disabled:opacity-40 disabled:cursor-not-allowed hover:bg-emerald-100 dark:hover:bg-emerald-900/30 
+                       transition-all duration-200"
           >
             Redo ↪
           </button>
@@ -94,8 +98,9 @@ export default function QueryBuilder() {
           <button
             type="button"
             onClick={handleSavePreset}
-            className="px-3 py-1.5 text-xs rounded border border-border
-                       hover:bg-muted transition-colors"
+            className="px-3 py-2 text-xs font-medium rounded-lg border-2 border-emerald-300 dark:border-emerald-700
+                       bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
+                       hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all duration-200"
           >
             Save Preset
           </button>
@@ -104,8 +109,9 @@ export default function QueryBuilder() {
           <button
             type="button"
             onClick={handleExport}
-            className="px-3 py-1.5 text-xs rounded border border-border
-                       hover:bg-muted transition-colors"
+            className="px-3 py-2 text-xs font-medium rounded-lg border-2 border-emerald-300 dark:border-emerald-700
+                       bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
+                       hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all duration-200"
           >
             Export JSON
           </button>
@@ -114,8 +120,9 @@ export default function QueryBuilder() {
           <button
             type="button"
             onClick={handleImport}
-            className="px-3 py-1.5 text-xs rounded border border-border
-                       hover:bg-muted transition-colors"
+            className="px-3 py-2 text-xs font-medium rounded-lg border-2 border-emerald-300 dark:border-emerald-700
+                       bg-emerald-50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300
+                       hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all duration-200"
           >
             Import JSON
           </button>
@@ -124,9 +131,9 @@ export default function QueryBuilder() {
           <button
             type="button"
             onClick={resetQuery}
-            className="px-3 py-1.5 text-xs rounded border border-red-300
-                       text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30
-                       transition-colors"
+            className="px-3 py-2 text-xs font-medium rounded-lg border-2 border-red-300 dark:border-red-700
+                       bg-red-50 dark:bg-red-950/20 text-red-700 dark:text-red-300
+                       hover:bg-red-100 dark:hover:bg-red-900/30 transition-all duration-200"
           >
             Reset
           </button>
@@ -191,7 +198,7 @@ export default function QueryBuilder() {
         </span>
         <div className="w-48 h-2 rounded-full bg-muted overflow-hidden">
           <div
-            className="h-full bg-blue-500 rounded-full transition-all duration-300"
+            className="h-full bg-emerald-600 rounded-full transition-all duration-300"
             style={{ width: `${(resultCount / totalCount) * 100}%` }}
           />
         </div>

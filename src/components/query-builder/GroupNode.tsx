@@ -1,7 +1,7 @@
 // components/query-builder/GroupNode.tsx
 import { memo } from 'react'
-import { Group, Rule } from '../types/query'
-import { Schema } from '../types/schema'
+import { Group, Rule } from '@/types/query'
+import { Schema } from '@/types/schema'
 import { ValidationError } from '@/lib/query-validator'
 import {
   DndContext,
@@ -40,11 +40,11 @@ type Props = {
 
 // depth colors — each nesting level gets a different left border color
 const DEPTH_COLORS = [
-  'border-l-blue-500',
+  'border-l-emerald-600',
   'border-l-orange-500',
   'border-l-purple-500',
-  'border-l-green-500',
   'border-l-pink-500',
+  'border-l-cyan-500',
 ]
 
 function GroupNode({

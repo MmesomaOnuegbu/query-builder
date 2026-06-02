@@ -89,8 +89,9 @@ function GroupNode({
   return (
     <div
       className={`
-        rounded-lg border bg-card
+        rounded-lg border bg-card transition-all
         ${!isRoot ? `border-l-2 ${depthColor}` : 'border-border'}
+        ${group.negated ? 'border-red-300 bg-red-50 dark:bg-red-950/20' : 'border-emerald-200 dark:border-emerald-900/30'}
         ${depth > 0 ? 'ml-4' : ''}
       `}
     >
@@ -137,14 +138,14 @@ function GroupNode({
             title="Toggle NOT"
             onClick={() => onUpdateGroup(group.id, { negated: !group.negated })}
             className={`
-              p-1 rounded transition-colors
+              p-1.5 rounded-md transition-all duration-200
               ${group.negated
-                ? 'text-red-500 bg-red-100 dark:bg-red-900'
-                : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                ? 'text-red-700 dark:text-red-300 bg-red-100 dark:bg-red-900/30'
+                : 'text-muted-foreground hover:text-red-600 dark:hover:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30'
               }
             `}
           >
-            <Ban size={13} />
+            <Ban size={14} />
           </button>
         )}
 
@@ -154,11 +155,11 @@ function GroupNode({
             type="button"
             title="Remove group"
             onClick={() => onRemove(group.id)}
-            className="p-1 rounded text-muted-foreground 
-                       hover:text-red-500 hover:bg-red-100 
-                       dark:hover:bg-red-900 transition-colors"
+            className="p-1.5 rounded-md text-muted-foreground 
+                       hover:text-red-600 dark:hover:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30 
+                       transition-all duration-200"
           >
-            <Trash2 size={13} />
+            <Trash2 size={14} />
           </button>
         )}
       </div>

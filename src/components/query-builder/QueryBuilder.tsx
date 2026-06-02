@@ -67,7 +67,7 @@ export default function QueryBuilder() {
 
       {/* ── Toolbar ──────────────────────────────────────────── */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <h1 className="text-xl font-semibold">Welcome</h1>
+        <h1 className="text-xl font-semibold">Query Builder</h1>
 
         <div className="flex items-center gap-2 flex-wrap">
           {/* undo/redo */}

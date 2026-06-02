@@ -1,5 +1,5 @@
 // lib/query-generator.ts
-import { Group, Rule, QueryNode, RuleValue } from '@/components/types/query'
+import { Group, Rule, QueryNode, RuleValue } from '@/types/query'
 
 // ── Main entry point ─────────────────────────────────────────────
 export function generateSQL(root: Group): string {

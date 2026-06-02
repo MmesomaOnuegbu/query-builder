@@ -18,6 +18,7 @@ export type Group = {
   children: QueryNode[]    // ← the recursion lives here
   collapsed?: boolean      // for collapsible UI
   label?: string           // optional group label
+  negated?: boolean        // for NOT conditions on groups
 }
 
 export type QueryNode = Rule | Group

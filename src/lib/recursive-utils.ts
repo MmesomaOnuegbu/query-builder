@@ -1,6 +1,6 @@
 // lib/recursive-utils.ts
 
-import { Group, QueryNode, Rule } from '@/components/types/query'
+import { Group, QueryNode, Rule } from '@/types/query'
 import { nanoid } from 'nanoid'
 
 // ── Add a node to a group by parent id ──────────────────────────

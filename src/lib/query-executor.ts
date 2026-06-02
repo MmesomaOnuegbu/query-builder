@@ -1,9 +1,8 @@
 
-
 // ─── Main entry point ────────────────────────────────────────────
 
-import { MockUser } from "../components/mock/data"
-import { Group, QueryNode, Rule, RuleValue } from "../components/types/query"
+import { MockUser } from "@/mock/data"
+import { Group, QueryNode, Rule, RuleValue } from "@/types/query"
 
 // This is the only function you call from outside this file
 export function executeQuery(root: Group, data: MockUser[]): MockUser[] {

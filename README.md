@@ -1,9 +1,4 @@
-can you give me all in a arkdow so i copy and paste
 
-8:05 AM
-Copy this entire block:
-
-md
 # Visual Query Builder
 
 A highly interactive visual query builder that allows users to construct complex database queries through a graphical interface — no raw SQL required.

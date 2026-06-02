@@ -1,3 +1,4 @@
+
 # Visual Query Builder
 
 A highly interactive visual query builder that allows users to construct complex database queries through a graphical interface — no raw SQL required.
